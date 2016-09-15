@@ -1,0 +1,13 @@
+*.class
+.gradle/
+build/
+target/
+
+.classpath
+.project
+.settings/
+
+*.iws
+.idea/
+.idea_modules/
+

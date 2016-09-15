@@ -1,0 +1,5 @@
+include "anagram"
+include "bob"
+include "etl"
+include "hello-world"
+include "word-count"
