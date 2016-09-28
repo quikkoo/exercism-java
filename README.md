@@ -3,6 +3,10 @@ Exercism Java
 
 [![GPLv3 License](http://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 
+[![CircleCI](https://circleci.com/gh/quikkoo/exercism-java.svg?style=svg)](https://circleci.com/gh/quikkoo/exercism-java)
+[![Build Status](https://snap-ci.com/quikkoo/exercism-java/branch/master/build_image)](https://snap-ci.com/quikkoo/exercism-java/branch/master)
+[![Codeship Status for quikkoo/exercism-java](https://app.codeship.com/projects/3af75120-6714-0134-c7b6-62ec90e592b2/status?branch=master)](https://app.codeship.com/projects/176099)
+
 Java exercises from [exercism.io](http://exercism.io/)
 
 This is a multi module project for all exercises in java language,
