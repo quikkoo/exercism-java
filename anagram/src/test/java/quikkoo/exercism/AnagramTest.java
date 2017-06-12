@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 public class AnagramTest {
 
     @Test
-    public void testDetectNoMatches() {
+    public void testShouldDetectNoMatches() {
         Anagram detector = new Anagram("diaper");
         List<String> anagrams = detector.matches(
             ImmutableList.of("hello", "world", "zombies", "pants"));
@@ -19,7 +19,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void testDetectSimpleAnagram() {
+    public void testShouldDetectSimpleAnagram() {
         Anagram detector = new Anagram("ant");
         List<String> anagrams = detector.matches(
             ImmutableList.of("tan", "stand", "at"));
@@ -27,7 +27,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void testDetectMultipleAnagrams() {
+    public void testShouldDetectMultipleAnagrams() {
         Anagram detector = new Anagram("master");
         List<String> anagrams = detector.matches(
             ImmutableList.of("stream", "pigeon", "maters"));
@@ -35,7 +35,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void testDoesNotConfuseDifferentDuplicates() {
+    public void testShouldNotConfuseDifferentDuplicates() {
         Anagram detector = new Anagram("galea");
         List<String> anagrams = detector.matches(
             ImmutableList.of("eagle"));
@@ -43,7 +43,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void testDoesNotIncludeIdenticalWords() {
+    public void testShouldNotIncludeIdenticalWords() {
         Anagram detector = new Anagram("corn");
         List<String> anagrams = detector.matches(
             ImmutableList.of("corn", "dark", "Corn", "rank", "CORN", "cron", "park"));
@@ -51,15 +51,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void testEliminateAnagramsWithSameChecksum() {
-        Anagram detector = new Anagram("mass");
-        List<String> anagrams = detector.matches(
-            ImmutableList.of("last"));
-        assertThat(anagrams, is(empty()));
-    }
-
-    @Test
-    public void testEliminateAnagramSubsets() {
+    public void testShouldEliminateAnagramSubsets() {
         Anagram detector = new Anagram("good");
         List<String> anagrams = detector.matches(
             ImmutableList.of("dog", "goody"));
@@ -67,7 +59,15 @@ public class AnagramTest {
     }
 
     @Test
-    public void testDetectAnagrams() {
+    public void testShouldEliminateAnagramsWithSameChecksum() {
+        Anagram detector = new Anagram("mass");
+        List<String> anagrams = detector.matches(
+            ImmutableList.of("last"));
+        assertThat(anagrams, is(empty()));
+    }
+
+    @Test
+    public void testShouldDetectAnagrams() {
         Anagram detector = new Anagram("listen");
         List<String> anagrams = detector.matches(
             ImmutableList.of("enlists", "google", "inlets", "banana"));
@@ -75,7 +75,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void testMoreAnagrams() {
+    public void testShouldDetectMoreMultipleAnagrams() {
         Anagram detector = new Anagram("allergy");
         List<String> anagrams = detector.matches(
             ImmutableList.of("gallery", "ballerina", "regally", "clergy", "largely", "leading"));
@@ -83,16 +83,15 @@ public class AnagramTest {
     }
 
     @Test
-    public void testTreatSubjectAnagramsAsCaseInsensitive() {
+    public void testShouldTreatSubjectAnagramsAsCaseInsensitive() {
         Anagram detector = new Anagram("Orchestra");
         List<String> anagrams = detector.matches(
             ImmutableList.of("cashregister", "carthorse", "radishes"));
         assertThat(anagrams, hasItems("carthorse"));
     }
 
-
     @Test
-    public void testTreatCandidateAnagramsAsCaseInsensitive() {
+    public void testShouldTreatCandidateAnagramsAsCaseInsensitive() {
         Anagram detector = new Anagram("orchestra");
         List<String> anagrams = detector.matches(
             ImmutableList.of("cashregister", "Carthorse", "radishes"));

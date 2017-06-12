@@ -9,110 +9,116 @@ public class BobTest {
     private final Bob bob = new Bob();
 
     @Test
-    public void testSaySomething() {
+    public void testShouldRespondToAStatement() {
         String response = bob.hey("Tom-ay-to, tom-aaaah-to.");
         assertThat(response, is("Whatever."));
     }
 
     @Test
-    public void testShouting() {
+    public void testShouldRespondToShouting() {
         String response = bob.hey("WATCH OUT!");
         assertThat(response, is("Whoa, chill out!"));
     }
 
     @Test
-    public void testAskingAQuestion() {
+    public void testShouldRespondToQuestions() {
         String response = bob.hey("Does this cryogenic chamber make me look fat?");
         assertThat(response, is("Sure."));
     }
 
     @Test
-    public void testAskingANumericQuestion() {
+    public void testShouldRespondToQuestionsEndingWithNumbers() {
         String response = bob.hey("You are, what, like 15?");
         assertThat(response, is("Sure."));
     }
 
     @Test
-    public void testTalkingForcefully() {
+    public void testShouldRespondToForcefulTalking() {
         String response = bob.hey("Let's go make out behind the gym!");
         assertThat(response, is("Whatever."));
     }
 
     @Test
-    public void testUsingAcronymsInRegularSpeech() {
+    public void testShouldRespondToAcronymsInRegularSpeech() {
         String response = bob.hey("It's OK if you don't want to go to the DMV.");
         assertThat(response, is("Whatever."));
     }
 
     @Test
-    public void testForcefulQuestions() {
+    public void testShouldRespondToForcefulQuestionsAsShouting() {
         String response = bob.hey("WHAT THE HELL WERE YOU THINKING?");
         assertThat(response, is("Whoa, chill out!"));
     }
 
     @Test
-    public void testShoutingNumbers() {
-        String response = bob.hey("1, 2, 3 GO!");
-        assertThat(response, is("Whoa, chill out!"));
-    }
-
-    @Test
-    public void testOnlyNumbers() {
-        String response = bob.hey("1, 2, 3");
-        assertThat(response, is("Whatever."));
-    }
-
-    @Test
-    public void testQuestionWithOnlyNumbers() {
-        String response = bob.hey("4?");
-        assertThat(response, is("Sure."));
-    }
-
-    @Test
-    public void testShoutingWithSpecialCharacters() {
+    public void testShouldRespondToShoutingWithSpecialCharacters() {
         String response = bob.hey("ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!");
         assertThat(response, is("Whoa, chill out!"));
     }
 
     @Test
-    public void testShoutingWithUmlauts() {
-        String response = bob.hey("\u00dcML\u00c4\u00dcTS!");
+    public void testShouldRespondToNumbersWhenShouting() {
+        String response = bob.hey("1, 2, 3 GO!");
         assertThat(response, is("Whoa, chill out!"));
     }
 
     @Test
-    public void testCalmlySpeakingWithUmlauts() {
-        String response = bob.hey("\u00dcML\u00e4\u00dcTS!");
+    public void testShouldRespondToNumbersAsSpeech() {
+        String response = bob.hey("1, 2, 3");
         assertThat(response, is("Whatever."));
     }
 
     @Test
-    public void testShoutingWithNoExclamationMark() {
+    public void testShouldRespondToQuestionsWithOnlyNumbers() {
+        String response = bob.hey("4?");
+        assertThat(response, is("Sure."));
+    }
+
+    @Test
+    public void testShouldRespondToShoutingWithNoExclamationMark() {
         String response = bob.hey("I HATE YOU");
         assertThat(response, is("Whoa, chill out!"));
     }
 
     @Test
-    public void testStatementContainingQuestionMark() {
+    public void testShouldRespondToStatementsContainingQuestionMark() {
         String response = bob.hey("Ending with ? means a question.");
         assertThat(response, is("Whatever."));
     }
 
     @Test
-    public void testPrattlingOn() {
+    public void testShouldRespondToPrattlingOn() {
         String response = bob.hey("Wait! Hang on. Are you going to be OK?");
         assertThat(response, is("Sure."));
     }
 
     @Test
-    public void testSilence() {
+    public void testShouldRespondToSilence() {
         String response = bob.hey("");
         assertThat(response, is("Fine. Be that way!"));
     }
 
     @Test
-    public void testProlongedSilence() {
-        String response = bob.hey("    ");
+    public void testShouldRespondToProlongedSilence() {
+        String response = bob.hey("          ");
         assertThat(response, is("Fine. Be that way!"));
+    }
+
+    @Test
+    public void testShouldRespondToOthersBlankCharacters() {
+        String response = bob.hey("\n\r \t\u000B\u00A0\u2002");
+        assertThat(response, is("Fine. Be that way!"));
+    }
+
+    @Test
+    public void testShouldRespondToMultipleLineQuestions() {
+        String response = bob.hey("\nDoes this cryogenic chamber make me look fat?\nno");
+        assertThat(response, is("Whatever."));
+    }
+
+    @Test
+    public void testShouldRespondToNonLettersWithQuestion() {
+        String response = bob.hey(":) ?");
+        assertThat(response, is("Sure."));
     }
 }

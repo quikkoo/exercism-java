@@ -13,42 +13,39 @@ public class ETLTest {
     private final ETL etl = new ETL();
 
     @Test
-    public void testTransformOneValue() {
+    public void testShouldTransformOneValue() {
         Map<Integer, List<String>> actual = ImmutableMap.of(
-                1, (List<String>) ImmutableList.of("A"));
+                1, (List<String>) ImmutableList.of("WORLD"));
         Map<String, Integer> expected = ImmutableMap.of(
-                "a", 1);
+                "world", 1);
         assertThat(etl.transform(actual), is(expected));
     }
 
     @Test
-    public void testTransformMoreValues() {
+    public void testShouldTransformMoreValues() {
         Map<Integer, List<String>> actual = ImmutableMap.of(
-                1, (List<String>) ImmutableList.of("A", "E", "I", "O", "U"));
+                1, (List<String>) ImmutableList.of("WORLD", "GSCHOOLERS"));
         Map<String, Integer> expected = ImmutableMap.of(
-                "a", 1,
-                "e", 1,
-                "i", 1,
-                "o", 1,
-                "u", 1);
+                "world", 1,
+                "gschoolers", 1);
         assertThat(etl.transform(actual), is(expected));
     }
 
     @Test
-    public void testTransformMoreKeys() {
+    public void testShouldTransformMoreKeys() {
         Map<Integer, List<String>> actual = ImmutableMap.of(
-                1, (List<String>) ImmutableList.of("A", "E"),
-                2, (List<String>) ImmutableList.of("D", "G"));
+                1, (List<String>) ImmutableList.of("APPLE", "ARTICHOKE"),
+                2, (List<String>) ImmutableList.of("BOAT", "BALLERINA"));
         Map<String, Integer> expected = ImmutableMap.of(
-                "a", 1,
-                "e", 1,
-                "d", 2,
-                "g", 2);
+                "apple", 1,
+                "artichoke", 1,
+                "boat", 2,
+                "ballerina", 2);
         assertThat(etl.transform(actual), is(expected));
     }
 
     @Test
-    public void testTransformFullDataset() {
+    public void testShouldTransformFullDataset() {
         Map<Integer, List<String>> actual = new ImmutableMap.Builder<Integer, List<String>>().
                 put(1, (List<String>) ImmutableList.of("A", "E", "I", "O", "U", "L", "N", "R", "S", "T")).
                 put(2, (List<String>) ImmutableList.of("D", "G")).

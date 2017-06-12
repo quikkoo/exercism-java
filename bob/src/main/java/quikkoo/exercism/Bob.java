@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class Bob {
 
-    private final Pattern fine = Pattern.compile("^[\\s\\v\\x{00A0}\\x{2002}]*$");
+    private final Pattern fine = Pattern.compile("^[\\s\\v\\u00A0\\u2002]*$");
     private final Pattern whoa = Pattern.compile("^[^\\p{Ll}]*[A-Z][^\\p{Ll}]*$");
     private final Pattern sure = Pattern.compile("^.*\\?[\\s\\v]*$");
 

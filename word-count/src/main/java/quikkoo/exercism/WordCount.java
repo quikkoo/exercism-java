@@ -8,19 +8,18 @@ import com.google.common.collect.ImmutableMap;
 
 public final class WordCount {
 
-    private static final Pattern PATTERN = Pattern.compile("[^'a-zA-Z0-9]+");
+    private static final Pattern PATTERN = Pattern.compile("[']?[^'a-zA-Z0-9]+[']?");
 
     private WordCount() {
     }
 
-    public static Map<String, Integer> count(String phrase) {
-        String[] words = PATTERN.split(phrase);
+    public static Map<String, Integer> calculate(String phrase) {
+        String[] words = PATTERN.split(phrase.toLowerCase());
 
         Map<String, Integer> result = new TreeMap<String, Integer>();
         for (int i = 0; i < words.length; i++) {
-            String word = words[i].toLowerCase();
-            Integer count = getCount(result, word) + 1;
-            result.put(word, count);
+            Integer count = getCount(result, words[i]) + 1;
+            result.put(words[i], count);
         }
 
         return ImmutableMap.copyOf(result);

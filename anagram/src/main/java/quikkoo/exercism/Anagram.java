@@ -41,7 +41,7 @@ public class Anagram {
 
     private static boolean hasSameElements(char[] lhs, char[] rhs) {
         boolean result = true;
-        for (int i = 0; result && i < lhs.length && i < rhs.length; i++) {
+        for (int i = 0; result && i < lhs.length; i++) {
             result = lhs[i] == rhs[i];
         }
 

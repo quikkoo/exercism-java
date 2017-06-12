@@ -14,12 +14,17 @@ public class HelloWorldTest {
 
     @Test
     public void testWithEmptyName() {
-        assertThat(HelloWorld.greet(""), is("Hello, !"));
+        assertThat(HelloWorld.greet(""), is("Hello, World!"));
     }
 
     @Test
-    public void testWithNameAlice() {
-        assertThat(HelloWorld.greet("Alice"), is("Hello, Alice!"));
+    public void testWithNameJava() {
+        assertThat(HelloWorld.greet("Java"), is("Hello, Java!"));
+    }
+
+    @Test
+    public void testWithNameExercism() {
+        assertThat(HelloWorld.greet("Exercism"), is("Hello, Exercism!"));
     }
 
     @Test(expected = IllegalArgumentException.class)

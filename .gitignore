@@ -1,7 +1,11 @@
 *.class
+*.log
+
+.lein*
 .gradle/
 build/
 target/
+/project/project
 
 .classpath
 .project
@@ -10,4 +14,8 @@ target/
 *.iws
 .idea/
 .idea_modules/
+
+.cache-main
+.scala_dependencies
+.worksheet
 
